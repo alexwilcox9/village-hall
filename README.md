@@ -14,6 +14,7 @@ A step by step series of examples that tell you have to get a development env ru
 Install all the required modules
 
 ```
+cd web
 npm install
 ```
 
