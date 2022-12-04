@@ -1,22 +1,74 @@
 [
     {
-        "name": "Matt Fiddes Martial Arts",
-        "url": "http://www.mattfiddes-ds.com"
-    },
-    {
-        "name": "Excelsior ADC Gymnastics",
-        "url": "http://excelsiorgroup.co.uk/excelsior-athletic-development-club/gymnastics/"
-    },
-    {
-        "name": "Willand Folk Dance Club",
-        "url": "http://www.willandfolkdanceclub.co.uk/"
-    },
-    {
-        "name": "Simply Pilates & Stretch",
-        "url": "http://www.simplypilatesandstretch.co.uk/"
+        "name": "Cameo",
+        "url": "https://www.facebook.com/CAMEO-Willand-2082624665319285/"
     },
     {
         "name": "Culm Valley Model Railway Club",
-        "url": "http://www.cvmrc.co.uk/"
+        "url": "https://www.cvmrc.co.uk/"
+    },
+    {
+        "name": "Culm Valley u3a",
+        "url": "https://u3asites.org.uk/culm-valley/welcome"
+    },
+    {
+        "name": "Excelsior ADC Gymnastics",
+        "url": "https://excelsiorgroup.co.uk/excelsior-athletic-development-club/gymnastics/"
+    },
+    {
+        "name": "Exeter Theatre Train",
+        "url": "https://www.theatretrain.co.uk/exeter/"
+    },
+    {
+        "name": "Kettlebells",
+        "url": "https://www.facebook.com/kettlebell.pump"
+    },
+    {
+        "name": "Matt Fiddes Martial Arts",
+        "url": "https://www.mattfiddestiverton.com/"
+    },
+    {
+        "name": "Move it or Lose it",
+        "url": "https://www.moveitorloseit.co.uk/"
+    },
+    {
+        "name": "Rugby Tots",
+        "url": "https://www.rugbytots.co.uk"
+    },
+    {
+        "name": "Simply Pilates & Stretch",
+        "url": "https://www.simplypilatesandstretch.co.uk/"
+    },
+    {
+        "name": "Tiny Tots",
+        "url": "https://www.facebook.com/tinytotswilland"
+    },
+    {
+        "name": "Tiverton Shotokan Karate Club",
+        "url": "https://www.facebook.com/TivertonKarate"
+    },
+    {
+        "name": "Willand Folk Dance Club",
+        "url": "https://www.willandfolkdanceclub.co.uk/"
+    },
+    {
+        "name": "Willand Garden Club",
+        "url": "https://gardenclub.willandvillagehall.org.uk/"
+    },
+    {
+        "name": "Willand Parish Council",
+        "url": "https://www.willand-pc.org.uk/"
+    },
+    {
+        "name": "Willand Tennis Club",
+        "url": "https://clubspark.lta.org.uk/WillandTennisClub"
+    },
+    {
+        "name": "Willand Theatrical Society",
+        "url": "https://www.facebook.com/willandtheatricalsociety"
+    },
+    {
+        "name": "Zumba",
+        "url": "https://www.laineysparkes.co.uk"
     }
 ]
