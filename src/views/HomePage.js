@@ -5,7 +5,7 @@ import AboutCard from './cards/aboutCard';
 import FacebookContainer from './facebookContainer';
 import HallUsersCard from './cards/hallUsersCard';
 import BookingCard from './cards/bookingCard';
-import NewStatsCard from './cards/newStatsCard';
+import StatsCard from './cards/statsCard';
 
 
 
@@ -15,16 +15,16 @@ class HomePage extends Component {
             <Page title="home">
                 <div className="row">
                     <div id="home-main" className="col-lg-7">
-                            <AboutCard />
-                            
-                            <NewStatsCard />
-                        
+                        <AboutCard />
+
+                        <StatsCard />
+
                     </div>
                     <div id="home-sidebar" className="col-lg-5 align-content-center">
                         <div className="col-12">
-                        <BookingCard />
-                        <HallUsersCard />
-                        <FacebookContainer />
+                            <BookingCard />
+                            <HallUsersCard />
+                            <FacebookContainer />
                         </div>
                     </div>
                 </div>
