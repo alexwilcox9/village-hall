@@ -81,3 +81,14 @@ resource "azurerm_dns_cname_record" "dkim2" {
   ttl                 = 3600
   record              = "selector2-willandvillagehall-org-uk._domainkey.WillandVillageHall.onmicrosoft.com"
 }
+
+resource "azurerm_dns_txt_record" "dmarc" {
+  name                = "_dmarc"
+  zone_name           = azurerm_dns_zone.wvh.name
+  resource_group_name = azurerm_resource_group.wvh.name
+  ttl                 = 3600
+
+  record {
+    value = "v=DMARC1; p=reject; adkim=s; aspf=s;"
+  }
+}

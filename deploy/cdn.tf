@@ -39,6 +39,27 @@ resource "azurerm_cdn_endpoint" "web" {
     }
   }
 
+  delivery_rule {
+    name  = "CacheExceptions"
+    order = 2
+
+    modify_response_header_action {
+      action = "Overwrite"
+      name   = "cache-control"
+      value  = "no-cache"
+    }
+
+    url_file_extension_condition {
+      match_values = [
+        "json",
+        "pdf",
+        "xls",
+      ]
+      operator   = "Equal"
+      transforms = ["Lowercase"]
+    }
+  }
+
   origin {
     name       = "willandvillagehall"
     host_name  = azurerm_storage_account.web.primary_web_host
