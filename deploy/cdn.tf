@@ -60,6 +60,51 @@ resource "azurerm_cdn_endpoint" "web" {
     }
   }
 
+  delivery_rule {
+    name  = "RewriteToIndex"
+    order = 3
+
+    url_path_condition {
+      match_values = [
+        "calendar",
+        "contact",
+        "floorplan",
+        "gallery",
+      ]
+      operator = "Equal"
+      transforms = [
+        "Lowercase",
+      ]
+    }
+    url_rewrite_action {
+      destination             = "/"
+      preserve_unmatched_path = false
+      source_pattern          = "/"
+    }
+  }
+
+  delivery_rule {
+    name  = "RedirectWWW"
+    order = 4
+
+    request_uri_condition {
+      match_values = [
+        "https://www.",
+        "http://www.",
+      ]
+      operator = "BeginsWith"
+      transforms = [
+        "Lowercase",
+      ]
+    }
+
+    url_redirect_action {
+      hostname      = "willandvillagehall.org.uk"
+      protocol      = "Https"
+      redirect_type = "Found"
+    }
+  }
+
   origin {
     name       = "willandvillagehall"
     host_name  = azurerm_storage_account.web.primary_web_host
@@ -67,12 +112,22 @@ resource "azurerm_cdn_endpoint" "web" {
   }
 }
 
-resource "azurerm_cdn_endpoint_custom_domain" "wvh" {
+resource "azurerm_cdn_endpoint_custom_domain" "root" {
   name            = "wvh"
   cdn_endpoint_id = azurerm_cdn_endpoint.web.id
   host_name       = azurerm_dns_zone.wvh.name
 
   user_managed_https {
-    key_vault_secret_id = azurerm_key_vault_certificate.wvh-web.secret_id
+    key_vault_secret_id = azurerm_key_vault_certificate.wvh-web.versionless_secret_id
+  }
+}
+
+resource "azurerm_cdn_endpoint_custom_domain" "www" {
+  name            = "www"
+  cdn_endpoint_id = azurerm_cdn_endpoint.web.id
+  host_name       = trimsuffix(azurerm_dns_cname_record.www.fqdn, ".")
+
+  user_managed_https {
+    key_vault_secret_id = azurerm_key_vault_certificate.wvh-web.versionless_secret_id
   }
 }

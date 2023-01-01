@@ -21,6 +21,15 @@ resource "azurerm_dns_aaaa_record" "web" {
   target_resource_id  = azurerm_cdn_endpoint.web.id
 }
 
+resource "azurerm_dns_cname_record" "www" {
+  name                = "www"
+  zone_name           = azurerm_dns_zone.wvh.name
+  resource_group_name = azurerm_resource_group.wvh.name
+  ttl                 = 300
+  target_resource_id  = azurerm_cdn_endpoint.web.id
+}
+
+
 resource "azurerm_dns_cname_record" "cdnverify" {
   name                = "cdnverify"
   zone_name           = azurerm_dns_zone.wvh.name
