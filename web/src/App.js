@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 //Page Imports
 import HomePage from './views/HomePage';
+import BookingPage from './views/BookingPage';
 import CalendarPage from './views/CalendarPage';
 import ContactPage from './views/ContactPage';
 import GalleryPage from './views/GalleryPage';
@@ -21,7 +22,7 @@ const CustomLink = ({ label, to, activeOnlyWhenExact }) => (
     exact={activeOnlyWhenExact}
   >
     {({ match }) => {
-      return ( <Link className={match ? "nav-link active" : "nav-link"} to={to}>{label}</Link> )
+      return (<Link className={match ? "nav-link active" : "nav-link"} to={to}>{label}</Link>)
     }}
   </Route>
 );
@@ -35,12 +36,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetchConfig( (config) => {
-      this.setState({isFun: config.isFun});
+    fetchConfig((config) => {
+      this.setState({ isFun: config.isFun });
     })
   }
 
-  
+
   render() {
     const underDevelopment = false;
 
@@ -56,10 +57,13 @@ class App extends Component {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                   <li className="nav-item">
-                      <CustomLink activeOnlyWhenExact={true} label="Home" to="/" />
+                    <CustomLink activeOnlyWhenExact={true} label="Home" to="/" />
                   </li>
                   <li className="nav-item">
-                      <CustomLink activeOnlyWhenExact={true} label="Event Calendar" to="/calendar" />
+                    <CustomLink activeOnlyWhenExact={true} label="Event Calendar" to="/calendar" />
+                  </li>
+                  <li className="nav-item">
+                    <CustomLink activeOnlyWhenExact={true} label="Booking" to="/booking" />
                   </li>
                   <li className="nav-item">
                     <CustomLink activeOnlyWhenExact={true} label="Floor Plan" to="/floorplan" />
@@ -73,8 +77,9 @@ class App extends Component {
                 </ul>
               </div>
             </header>
-    {(underDevelopment) && <div className="alert alert-warning"><h2>Site Under Development</h2><span>Please bear with us.</span></div> }
+            {(underDevelopment) && <div className="alert alert-warning"><h2>Site Under Development</h2><span>Please bear with us.</span></div>}
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/booking" component={BookingPage} />
             <Route exact path="/calendar" component={CalendarPage} />
             <Route exact path="/gallery" component={GalleryPage} />
             <Route exact path="/contact" component={ContactPage} />
