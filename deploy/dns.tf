@@ -48,7 +48,7 @@ resource "azurerm_dns_mx_record" "exchange" {
 
   record {
     preference = 0
-    exchange   = "willandvillagehall-org-uk.mail.protection.outlook.com"
+    exchange   = "willandvillagehall-org-uk.t-v1.mx.microsoft"
   }
 }
 
