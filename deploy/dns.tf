@@ -10,7 +10,7 @@ resource "azurerm_dns_a_record" "web" {
   zone_name           = azurerm_dns_zone.wvh.name
   resource_group_name = azurerm_resource_group.wvh.name
   ttl                 = 300
-  target_resource_id  = azurerm_cdn_endpoint.web.id
+  target_resource_id  = azurerm_cdn_frontdoor_endpoint.fd_endpoint.id
 }
 
 resource "azurerm_dns_aaaa_record" "web" {
@@ -18,7 +18,7 @@ resource "azurerm_dns_aaaa_record" "web" {
   zone_name           = azurerm_dns_zone.wvh.name
   resource_group_name = azurerm_resource_group.wvh.name
   ttl                 = 300
-  target_resource_id  = azurerm_cdn_endpoint.web.id
+  target_resource_id  = azurerm_cdn_frontdoor_endpoint.fd_endpoint.id
 }
 
 resource "azurerm_dns_cname_record" "www" {
@@ -26,16 +26,30 @@ resource "azurerm_dns_cname_record" "www" {
   zone_name           = azurerm_dns_zone.wvh.name
   resource_group_name = azurerm_resource_group.wvh.name
   ttl                 = 300
-  target_resource_id  = azurerm_cdn_endpoint.web.id
+  target_resource_id  = azurerm_cdn_frontdoor_endpoint.fd_endpoint.id
 }
 
 
-resource "azurerm_dns_cname_record" "cdnverify" {
-  name                = "cdnverify"
+resource "azurerm_dns_txt_record" "dnsauth" {
+  name                = "_dnsauth"
   zone_name           = azurerm_dns_zone.wvh.name
   resource_group_name = azurerm_resource_group.wvh.name
   ttl                 = 300
-  record              = "cdnverify.${azurerm_cdn_endpoint.web.fqdn}"
+
+  record {
+    value = azurerm_cdn_frontdoor_custom_domain.fd_custom_domain["willandvillagehall.org.uk"].validation_token
+  }
+}
+
+resource "azurerm_dns_txt_record" "dnsauth-www" {
+  name                = "_dnsauth.www"
+  zone_name           = azurerm_dns_zone.wvh.name
+  resource_group_name = azurerm_resource_group.wvh.name
+  ttl                 = 300
+
+  record {
+    value = azurerm_cdn_frontdoor_custom_domain.fd_custom_domain["www.willandvillagehall.org.uk"].validation_token
+  }
 }
 
 # 365 DNS

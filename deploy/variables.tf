@@ -1,4 +1,10 @@
 locals {
+
+  domains = toset([
+    "willandvillagehall.org.uk",
+    "www.willandvillagehall.org.uk",
+  ])
+
   compress-types = ["application/eot",
     "application/font",
     "application/font-sfnt",
